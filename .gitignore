@@ -1,0 +1,30 @@
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Dependencies and generated builds
+**/node_modules/
+**/vendor/
+**/dist/
+**/build/
+**/.phpunit.cache/
+**/.phpunit.result.cache
+**/*.tsbuildinfo
+
+# Local databases, logs, and runtime files
+**/*.sqlite
+**/*.sqlite-*
+**/storage/logs/*
+!**/storage/logs/.gitignore
+**/bootstrap/cache/*
+!**/bootstrap/cache/.gitignore
+**/public/hot
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+*.swp
