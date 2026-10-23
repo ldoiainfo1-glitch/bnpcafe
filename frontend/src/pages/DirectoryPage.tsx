@@ -54,12 +54,12 @@ export function DirectoryPage() {
   return (
     <main className="page-shell page-content directory-page">
       <div className="page-intro">
-        <p className="eyebrow">Find a new connection</p>
-        <h1>Meet the <em>people behind it.</em></h1>
-        <p>Discover the businesses and members who have chosen to connect through BNP Cafe.</p>
+        <p className="eyebrow">Business Directory</p>
+        <h1>Discover businesses. Find expertise. Create connections.</h1>
+        <p>Stop searching randomly. Start connecting intentionally.</p>
       </div>
       <form className="directory-search" onSubmit={searchDirectory}>
-        <label className="field-label">Search by name or business<input onChange={(e) => setSearch(e.target.value)} placeholder="Try a name, business, or keyword" value={search} /></label>
+        <label className="field-label">Search members or businesses…<input onChange={(e) => setSearch(e.target.value)} placeholder="Search members or businesses…" value={search} /></label>
         <label className="field-label">Industry<input onChange={(e) => setIndustry(e.target.value)} placeholder="Filter by industry" value={industry} /></label>
         <button aria-label="Search directory" className="button button-primary" type="submit"><Search size={16} /> Search</button>
       </form>

@@ -114,7 +114,7 @@ export function AccountPage({ onNotice }: AccountPageProps) {
           {!isAdmin && (
             <>
               <Link className="account-shortcut" to="/membership/apply"><span><CreditCard size={18} /> Apply for membership</span><ArrowRight size={16} /></Link>
-              {user?.role === 'member' && <Link className="account-shortcut" to="/directory"><span><UserRound size={18} /> Member directory</span><ArrowRight size={16} /></Link>}
+              {user?.role === 'member' && <Link className="account-shortcut" to="/account/directory"><span><UserRound size={18} /> Member directory</span><ArrowRight size={16} /></Link>}
             </>
           )}
           <Link className="account-shortcut" to="/support"><span><CircleHelp size={18} /> Get support</span><ArrowRight size={16} /></Link>
@@ -144,7 +144,7 @@ function MemberOverview({ dashboard }: { dashboard: MemberDashboard | null }) {
           <h2>Build your next <em>connection.</em></h2>
           <p>Keep your membership current, discover fellow members, and make the most of upcoming chapter events.</p>
         </div>
-        <Link className="button dashboard-feature-button" to="/directory"><Users size={17} /> Explore member directory</Link>
+        <Link className="button dashboard-feature-button" to="/account/directory"><Users size={17} /> Explore member directory</Link>
       </section>
       <div className="account-summary-grid">
         <SummaryCard label="Memberships" value={dashboard.memberships.length} icon={<CreditCard size={19} />} />

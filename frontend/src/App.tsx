@@ -19,7 +19,8 @@ import { MembershipApplyPage } from './pages/MembershipApplyPage'
 import { MembershipPlansPage } from './pages/MembershipPlansPage'
 import { PaymentCenterPage } from './pages/PaymentCenterPage'
 import { ProfilePage } from './pages/ProfilePage'
-import { AboutPage, BlogPage, CoreTeamPage, TestimonialsPage } from './pages/PublicInformationPages'
+import { PublicDirectoryPage } from './pages/PublicDirectoryPage'
+import { AboutPage, BlogPage, ChaptersPage, CoreTeamPage, FaqPage, PartnersPage, TestimonialsPage } from './pages/PublicInformationPages'
 import { SupportPage } from './pages/SupportPage'
 
 function AppRoutes() {
@@ -31,15 +32,20 @@ function AppRoutes() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/chapters" element={<ChaptersPage />} />
         <Route path="/blog" element={<BlogPage />} />
+        <Route path="/stories" element={<TestimonialsPage />} />
         <Route path="/testimonials" element={<TestimonialsPage />} />
         <Route path="/core-team" element={<CoreTeamPage />} />
+        <Route path="/partners" element={<PartnersPage />} />
+        <Route path="/faq" element={<FaqPage />} />
         <Route path="/events" element={<EventsPage onNotice={setNotice} />} />
         <Route path="/membership" element={<MembershipPlansPage />} />
         <Route path="/membership/apply" element={<AuthenticatedRoute><MembershipApplyPage onNotice={setNotice} /></AuthenticatedRoute>} />
         <Route path="/account/finances" element={<AuthenticatedRoute><PaymentCenterPage onNotice={setNotice} /></AuthenticatedRoute>} />
         <Route path="/profile" element={<AuthenticatedRoute><ProfilePage onNotice={setNotice} /></AuthenticatedRoute>} />
-        <Route path="/directory" element={<AuthenticatedRoute><DirectoryPage /></AuthenticatedRoute>} />
+        <Route path="/directory" element={<PublicDirectoryPage />} />
+        <Route path="/account/directory" element={<AuthenticatedRoute><DirectoryPage /></AuthenticatedRoute>} />
         <Route path="/support" element={<AuthenticatedRoute><SupportPage onNotice={setNotice} /></AuthenticatedRoute>} />
         <Route path="/admin/applications" element={<AdminRoute><AdminApplicationsPage onNotice={setNotice} /></AdminRoute>} />
         <Route path="/admin/events" element={<AdminRoute><AdminEventsPage onNotice={setNotice} /></AdminRoute>} />

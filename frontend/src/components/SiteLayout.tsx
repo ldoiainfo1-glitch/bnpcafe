@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BarChart3, CalendarDays, ClipboardList, Coffee, CreditCard, ExternalLink, FileText, LayoutDashboard, LogOut, Mail, Menu, CircleHelp, Phone, UserRound, Users, X } from 'lucide-react'
+import { BarChart3, CalendarDays, ClipboardList, Coffee, CreditCard, ExternalLink, FileText, LayoutDashboard, LogOut, Menu, CircleHelp, UserRound, Users, X } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import type { PropsWithChildren } from 'react'
@@ -11,14 +11,14 @@ interface SiteLayoutProps extends PropsWithChildren {
 }
 
 const links = [
-  { to: '/', label: 'Home' },
+  { to: '/about', label: 'About' },
   { to: '/membership', label: 'Membership' },
+  { to: '/chapters', label: 'Chapters' },
   { to: '/events', label: 'Events' },
-  { to: '/blog', label: 'Blog' },
-  { to: '/testimonials', label: 'Testimonials' },
-  { to: '/about', label: 'About Us' },
-  { to: '/core-team', label: 'Core Team' },
-  { to: '/contact', label: 'Contact' },
+  { to: '/directory', label: 'Directory' },
+  { to: '/stories', label: 'Stories' },
+  { to: '/partners', label: 'Partners' },
+  { to: '/faq', label: 'FAQ' },
 ]
 
 interface DashboardNavigationItem {
@@ -58,7 +58,7 @@ function dashboardNavigation(role: string): DashboardNavigationItem[] {
       overview,
       { to: '/account/finances', label: 'Payments & invoices', icon: CreditCard },
       { to: '/membership/apply', label: 'Membership', icon: ClipboardList },
-      { to: '/directory', label: 'Member directory', icon: Users },
+      { to: '/account/directory', label: 'Member directory', icon: Users },
       { to: '/events', label: 'Events', icon: CalendarDays },
       { to: '/profile', label: 'My business profile', icon: UserRound },
       { to: '/support', label: 'Get support', icon: CircleHelp },
@@ -83,8 +83,9 @@ export function SiteLayout({ children, notice, onDismissNotice }: SiteLayoutProp
   const isDashboardRoute = Boolean(user) && (
     location.pathname === '/account'
     || location.pathname.startsWith('/admin/')
-    || ['/profile', '/directory', '/support', '/membership/apply', '/account/finances'].includes(location.pathname)
+    || ['/profile', '/account/directory', '/support', '/membership/apply', '/account/finances'].includes(location.pathname)
   )
+  const visibleAuthError = isDashboardRoute || location.pathname === '/login' ? error : ''
 
   async function handleLogout() {
     setLogoutError('')
@@ -139,10 +140,10 @@ export function SiteLayout({ children, notice, onDismissNotice }: SiteLayoutProp
             </div>
           </aside>
           <div className="dashboard-main">
-            {(notice || error || logoutError) && (
+            {(notice || visibleAuthError || logoutError) && (
               <div className={`notice ${notice ? 'notice-success' : 'notice-error'}`} role="status">
                 <div className="dashboard-notice-inner">
-                  <span>{notice || error || logoutError}</span>
+                  <span>{notice || visibleAuthError || logoutError}</span>
                   {notice && <button aria-label="Dismiss notification" onClick={onDismissNotice} type="button"><X size={18} /></button>}
                 </div>
               </div>
@@ -153,36 +154,22 @@ export function SiteLayout({ children, notice, onDismissNotice }: SiteLayoutProp
       ) : (
         <>
       <header className="site-header">
-        <div className="site-utility-bar">
-          <div className="page-shell site-utility-inner">
-            <div className="site-contact-links">
-              <a href="tel:+919624597597"><Phone size={13} /> +91 96245 97597</a>
-              <a href="mailto:info@bnpcafe.com"><Mail size={13} /> info@bnpcafe.com</a>
-            </div>
-            <div className="site-utility-actions">
-              <Link onClick={() => setMenuOpen(false)} to="/contact"><CircleHelp size={13} /> Contact Us</Link>
-              <Link className="utility-login" onClick={() => setMenuOpen(false)} to={user ? '/account' : '/login'}>
-                <UserRound size={13} /> {user ? 'Dashboard' : 'Login'}
-              </Link>
-            </div>
-          </div>
-        </div>
         <div className="site-nav-row">
-          <div className="page-shell site-nav-inner">
+          <div className="page-shell site-nav-inner reference-site-nav-inner">
             <Link aria-label="BNP Cafe home" className="brand" to="/" onClick={() => setMenuOpen(false)}>
-              <span className="brand-mark brand-monogram">B</span>
-              <span className="brand-name">BNP Cafe</span>
+              <span className="brand-mark"><Coffee size={20} /></span>
+              <span className="brand-name">BNP CAFE</span>
             </Link>
             <button
               aria-expanded={menuOpen}
-              aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-              className="menu-toggle"
+              aria-label={menuOpen ? 'Close menu' : 'Menu'}
+              className="menu-toggle reference-menu-toggle"
               onClick={() => setMenuOpen((open) => !open)}
               type="button"
             >
               {menuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
-            <nav aria-label="Main navigation" className={`main-nav ${menuOpen ? 'main-nav-open' : ''}`}>
+            <nav aria-label="Main navigation" className={`main-nav reference-main-nav${menuOpen ? ' reference-main-nav-open' : ''}`}>
               {links.map((link) => (
                 <NavLink
                   className={({ isActive }) => `nav-link${isActive && (link.to !== '/' || location.pathname === '/') ? ' nav-link-active' : ''}`}
@@ -194,17 +181,16 @@ export function SiteLayout({ children, notice, onDismissNotice }: SiteLayoutProp
                   {link.label}
                 </NavLink>
               ))}
-              <Link className="button button-small button-accent nav-join-button" onClick={() => setMenuOpen(false)} to="/membership">
-                Join BNP Cafe
-              </Link>
+              <Link className="button button-accent nav-join-button-mobile" onClick={() => setMenuOpen(false)} to="/login">Join BNP CAFE</Link>
             </nav>
+            <Link className="button button-accent nav-join-button" onClick={() => setMenuOpen(false)} to="/login">Join BNP CAFE</Link>
           </div>
         </div>
       </header>
-      {(notice || error || logoutError) && (
+      {(notice || visibleAuthError || logoutError) && (
         <div className={`notice ${notice ? 'notice-success' : 'notice-error'}`} role="status">
           <div className="page-shell flex items-center justify-between gap-4 py-3">
-            <span>{notice || error || logoutError}</span>
+            <span>{notice || visibleAuthError || logoutError}</span>
             {notice && (
               <button aria-label="Dismiss notification" onClick={onDismissNotice} type="button">
                 <X size={18} />
@@ -215,13 +201,40 @@ export function SiteLayout({ children, notice, onDismissNotice }: SiteLayoutProp
       )}
       {children}
       <footer className="site-footer">
-        <div className="page-shell footer-inner">
-          <Link aria-label="BNP Cafe home" className="brand brand-footer" to="/">
-            <span className="brand-mark"><Coffee size={18} /></span>
-            <span className="brand-name">BNP <span>Cafe</span></span>
-          </Link>
-          <p>Good conversations build good business.</p>
-          <span className="footer-copy">© {new Date().getFullYear()} BNP Cafe</span>
+        <div className="page-shell footer-inner reference-footer-inner">
+          <div className="reference-footer-brand">
+            <Link aria-label="BNP CAFE home" className="brand brand-footer" to="/">
+              <span className="brand-name">BNP CAFE</span>
+            </Link>
+            <p>Brew Connections. Build Trust. Grow Business.</p>
+          </div>
+          <div className="reference-footer-group">
+            <p>Explore</p>
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+            <Link to="/membership">Membership</Link>
+            <Link to="/chapters">Chapters</Link>
+            <Link to="/events">Events</Link>
+            <Link to="/directory">Directory</Link>
+            <Link to="/stories">Success Stories</Link>
+          </div>
+          <div className="reference-footer-group">
+            <p>For Members</p>
+            <Link to="/login">Login</Link>
+            <Link to="/account/directory">Member Directory</Link>
+            <Link to="/events">Events</Link>
+            <Link to="/faq">FAQs</Link>
+          </div>
+          <div className="reference-footer-group">
+            <p>For Businesses</p>
+            <Link to="/partners">Partner With Us</Link>
+            <Link to="/partners">Start a Chapter</Link>
+            <Link to="/partners">Corporate Networking</Link>
+          </div>
+          <div className="reference-footer-bottom">
+            <span>Connect. Collaborate. Refer. Grow.</span>
+            <span>© BNP CAFE. All Rights Reserved.</span>
+          </div>
         </div>
       </footer>
         </>
