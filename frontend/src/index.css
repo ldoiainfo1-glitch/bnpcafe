@@ -30,6 +30,7 @@ button { color: inherit; }
 .page-shell { width: min(1160px, calc(100% - 56px)); margin-inline: auto; }
 .site-header { position: sticky; z-index: 30; top: 0; border-bottom: 1px solid rgba(32, 60, 57, .08); background: rgba(251, 250, 247, .95); backdrop-filter: blur(14px); }
 .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--green-deep); }
+.brand-logo { display: block; width: 64px; height: 62px; flex-shrink: 0; object-fit: contain; }
 .brand-mark { display: grid; width: 36px; height: 36px; place-items: center; border-radius: 50% 50% 45% 50%; background: #e7eee8; color: var(--green); }
 .brand-name { font-size: 18px; font-weight: 700; letter-spacing: -.06em; }
 .brand-name span { color: #a46e35; font-family: 'Playfair Display', Georgia, serif; font-weight: 500; font-style: italic; letter-spacing: -.03em; }
@@ -56,9 +57,10 @@ button { color: inherit; }
 .notice-success { color: #275544; background: #eaf3ec; }
 .notice-error { color: #8e3329; background: #faece8; }
 .notice button { display: inline-grid; place-items: center; border: 0; background: transparent; cursor: pointer; }
-.site-footer { margin-top: 40px; border-top: 1px solid var(--line); background: #f4f3ee; }
+.site-footer { border-top: 1px solid var(--line); background: #f4f3ee; }
 .footer-inner { display: flex; min-height: 92px; align-items: center; justify-content: space-between; gap: 20px; }
 .brand-footer .brand-mark { width: 32px; height: 32px; }
+.brand-footer .brand-logo { width: 112px; height: 108px; }
 .site-footer p, .footer-copy { color: #77817b; font-size: 12px; }
 .footer-copy { white-space: nowrap; }
 
@@ -102,7 +104,6 @@ button { color: inherit; }
 .text-link:hover { color: #a06c35; }
 .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; margin-top: 57px; }
 .value-card { position: relative; min-height: 249px; padding: 27px 27px 25px; border: 1px solid #e8e9e3; background: #fff; }
-.value-card-highlight { background: #f5f3ec; }
 .value-number { position: absolute; top: 26px; right: 25px; color: #bac2bc; font-size: 10px; font-weight: 700; letter-spacing: .12em; }
 .value-icon { display: grid; width: 44px; height: 44px; place-items: center; border-radius: 50%; }
 .value-icon-sage { color: #34705c; background: #e8f0e9; }
@@ -734,8 +735,7 @@ button { color: inherit; }
 .min-h-screen:not(.dashboard-app) .section-heading h2 em { color: #1c5c9f; }
 .min-h-screen:not(.dashboard-app) .intro-copy p { color: #526982; }
 .min-h-screen:not(.dashboard-app) .text-link { color: #175995; }
-.min-h-screen:not(.dashboard-app) .value-card { border-color: #dce6f1; background: #fff; }
-.min-h-screen:not(.dashboard-app) .value-card-highlight { border-color: #c2d7ee; background: #f0f6fd; }
+.min-h-screen:not(.dashboard-app) .value-card { border-color: #b4c9df; background: #fff; }
 .min-h-screen:not(.dashboard-app) .value-number { color: #8296ad; }
 .min-h-screen:not(.dashboard-app) .value-icon-sage,
 .min-h-screen:not(.dashboard-app) .value-icon-gold,
@@ -931,8 +931,9 @@ button { color: inherit; }
 .team-info-empty h2 { font-size: 19px; }
 .reference-site-nav-inner { width: min(1280px, calc(100% - 48px)); min-height: 72px; }
 .reference-site-nav-inner .brand { gap: 8px; }
+.reference-site-nav-inner .brand-logo { width: 62px; height: 60px; }
 .reference-site-nav-inner .brand-mark { width: 36px; height: 36px; border-radius: 50%; }
-.reference-site-nav-inner .brand-name { font-family: Georgia, serif; font-size: 20px; letter-spacing: 0; }
+.reference-site-nav-inner .brand-name { color: #153c65; font-family: Georgia, serif; font-size: 20px; letter-spacing: 0; white-space: nowrap; }
 .reference-site-nav-inner .reference-menu-toggle { display: none; }
 .reference-site-nav-inner .nav-join-button-mobile { display: none; }
 .reference-site-nav-inner .reference-main-nav { position: static; display: flex; width: auto; align-items: center; gap: 24px; padding: 0; border: 0; background: transparent; box-shadow: none; }
@@ -1156,7 +1157,8 @@ button { color: inherit; }
 .min-h-screen:not(.dashboard-app) .hero-section .button-accent:hover { background: #ffca2f; }
 .min-h-screen:not(.dashboard-app) .hero-section .button-outline {
   color: #174f88;
-  border-color: #b9cde2;
+  border: 1px solid #b9cde2;
+  background: #f0f6fd;
 }
 .min-h-screen:not(.dashboard-app) .hero-section .button-outline:hover { background: #edf5ff; }
 .hero-section .hero-art { min-height: 0; }
@@ -1199,10 +1201,9 @@ button { color: inherit; }
 .min-h-screen:not(.dashboard-app) .text-link { color: #175995; }
 .min-h-screen:not(.dashboard-app) .text-link:hover { color: #1c5c9f; }
 .min-h-screen:not(.dashboard-app) .value-card {
-  border-color: #dce6f1;
+  border-color: #b4c9df;
   background: #fff;
 }
-.min-h-screen:not(.dashboard-app) .value-card-highlight { border-color: #c2d7ee; background: #f0f6fd; }
 .min-h-screen:not(.dashboard-app) .value-number { color: #8296ad; }
 .min-h-screen:not(.dashboard-app) .value-icon-sage { color: #1e62a6; background: #e7f1fd; }
 .min-h-screen:not(.dashboard-app) .value-icon-gold { color: #1e62a6; background: #e7f1fd; }

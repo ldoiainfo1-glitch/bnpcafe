@@ -157,8 +157,8 @@ export function SiteLayout({ children, notice, onDismissNotice }: SiteLayoutProp
         <div className="site-nav-row">
           <div className="page-shell site-nav-inner reference-site-nav-inner">
             <Link aria-label="BNP Cafe home" className="brand" to="/" onClick={() => setMenuOpen(false)}>
-              <span className="brand-mark"><Coffee size={20} /></span>
-              <span className="brand-name">BNP CAFE</span>
+              <img alt="" className="brand-logo" src="/bnp-cafe-logo.png" />
+              <span className="brand-name">BNP Cafe</span>
             </Link>
             <button
               aria-expanded={menuOpen}
@@ -204,7 +204,7 @@ export function SiteLayout({ children, notice, onDismissNotice }: SiteLayoutProp
         <div className="page-shell footer-inner reference-footer-inner">
           <div className="reference-footer-brand">
             <Link aria-label="BNP CAFE home" className="brand brand-footer" to="/">
-              <span className="brand-name">BNP CAFE</span>
+              <img alt="" className="brand-logo" src="/bnp-cafe-logo.png" />
             </Link>
             <p>Brew Connections. Build Trust. Grow Business.</p>
           </div>

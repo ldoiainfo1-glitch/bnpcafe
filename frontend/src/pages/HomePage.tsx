@@ -62,7 +62,7 @@ export function HomePage() {
             ['Collaborate', 'Create partnerships, alliances, joint ventures and opportunities.'],
             ['Grow', 'Turn relationships into long-term business value.'],
           ].map(([title, description], index) => (
-            <article className={`value-card${index === 1 || index === 4 ? ' value-card-highlight' : ''}`} key={title}>
+            <article className="value-card" key={title}>
               <span className="value-number">{String(index + 1).padStart(2, '0')}</span>
               <div className={`value-icon ${index % 3 === 0 ? 'value-icon-sage' : index % 3 === 1 ? 'value-icon-gold' : 'value-icon-rose'}`}>
                 {index === 0 ? <Users size={22} /> : index === 1 ? <Coffee size={22} /> : <ArrowUpRight size={22} />}
