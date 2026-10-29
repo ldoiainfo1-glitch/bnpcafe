@@ -110,7 +110,7 @@ button { color: inherit; }
 .value-icon-gold { color: #956634; background: #f5e9d4; }
 .value-icon-rose { color: #9a6052; background: #f5e9e3; }
 .value-card h3 { margin: 25px 0 9px; color: #29423a; font-family: 'Playfair Display', Georgia, serif; font-size: 21px; font-weight: 600; }
-.value-card p { max-width: 290px; margin: 0; color: #78817c; font-size: 12px; line-height: 1.8; }
+.value-card p { max-width: 290px; margin: 0; color: #43574d; font-size: 15px; font-weight: 500; line-height: 1.7; }
 .story-strip { padding-block: 73px; color: #fff; background: #1d433a; }
 .story-layout { display: grid; grid-template-columns: .8fr 1.2fr; align-items: center; gap: 75px; }
 .story-layout h2 { color: #fff; font-size: 39px; }
@@ -741,7 +741,7 @@ button { color: inherit; }
 .min-h-screen:not(.dashboard-app) .value-icon-gold,
 .min-h-screen:not(.dashboard-app) .value-icon-rose { color: #1e62a6; background: #e7f1fd; }
 .min-h-screen:not(.dashboard-app) .value-card h3 { color: #1b436c; }
-.min-h-screen:not(.dashboard-app) .value-card p { color: #60748b; }
+.min-h-screen:not(.dashboard-app) .value-card p { color: #334e68; }
 .min-h-screen:not(.dashboard-app) .story-strip { background: #123d6b; }
 .min-h-screen:not(.dashboard-app) .story-layout h2 em { color: #f5c24c; }
 .min-h-screen:not(.dashboard-app) .story-link { border-color: rgba(218, 234, 251, .22); color: #e7f1fc; }
@@ -1209,7 +1209,7 @@ button { color: inherit; }
 .min-h-screen:not(.dashboard-app) .value-icon-gold { color: #1e62a6; background: #e7f1fd; }
 .min-h-screen:not(.dashboard-app) .value-icon-rose { color: #1e62a6; background: #e7f1fd; }
 .min-h-screen:not(.dashboard-app) .value-card h3 { color: #1b436c; }
-.min-h-screen:not(.dashboard-app) .value-card p { color: #60748b; }
+.min-h-screen:not(.dashboard-app) .value-card p { color: #334e68; }
 .min-h-screen:not(.dashboard-app) .story-strip { background: #123d6b; }
 .story-layout { grid-template-columns: .9fr 1.1fr; }
 .story-layout > div:first-child > p:last-child { margin: 17px 0 0; color: #bfd4e9; font-size: 12px; line-height: 1.8; }
@@ -1986,4 +1986,35 @@ button { color: inherit; }
 @media (max-width: 480px) {
   .business-directory-container { width: calc(100% - 36px); }
   .business-directory-hero h1 { font-size: 37px; }
+}
+
+body .min-h-screen :is(p, li, small, label, summary, dt, dd, time, figcaption, caption, address) {
+  font-size: 15px !important;
+  line-height: 1.6;
+}
+
+body .min-h-screen a:not(.button):not(.brand):not(.dashboard-brand),
+body .min-h-screen button,
+body .min-h-screen .button {
+  font-size: 14px !important;
+}
+
+body .min-h-screen :is(input, textarea, select) {
+  font-size: 15px !important;
+}
+
+body .min-h-screen:not(.dashboard-app) .home-step-card p,
+body .min-h-screen:not(.dashboard-app) .home-join-card p {
+  color: #334e68;
+  font-weight: 500;
+}
+
+body .min-h-screen:not(.dashboard-app) .value-card p {
+  color: #274560;
+  font-weight: 600;
+}
+
+body .min-h-screen:not(.dashboard-app) .hero-section .hero-copy > p {
+  color: #334e68;
+  font-weight: 500;
 }
